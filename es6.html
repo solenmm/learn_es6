@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6</title>
+</head>
+<body>
+  <p>
+    ES5 只有全局作用域和函数作用域，没有块级作用域，let实际上为 JavaScript 新增了块级作用域。
+    ES6允许块级作用域中声明函数，且最好使用函数表达式，而不是函数声明语句。
+    块级作用域必须是花括号包裹，否则会报错
+
+    const一旦声明变量，就必须立即初始化，不能留到以后赋值，否则会报错。
+
+    对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
+    例如
+    let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+    baz // "aaa"
+    foo // error: foo is not defined
+    上面代码中，foo是匹配的模式，baz才是变量。真正被赋值的是变量baz，而不是模式foo。
+
+    解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。由于undefined和null无法转为对象，所以对它们进行解构赋值，都会报错。
+
+    *解构赋值对提取 JSON 对象中的数据，尤其有用。*
+  </p>
+</body>
+</html>
