@@ -23,6 +23,42 @@
     解构赋值的规则是，只要等号右边的值不是对象或数组，就先将其转为对象。由于undefined和null无法转为对象，所以对它们进行解构赋值，都会报错。
 
     *解构赋值对提取 JSON 对象中的数据，尤其有用。*
+    let jsonData = {
+      id: 42,
+      status: "OK",
+      data: [867, 5309]
+    };
+    
+    let { id, status, data: number } = jsonData;
+    
+    console.log(id, status, number);
+    // 42, "OK", [867, 5309]
+    
+    String.fromCodePoint(大于0xFFFF的码点)方法 ---字符
+    字符串实例.codePointAt()方法 ---码点
+
+    字符串实例.includes()，返回布尔值，表示是否找到了参数字符串，支持第二个参数，表示开始搜索的位置
+
+    字符串实例.repeat()，返回一个新字符串，表示将原字符串重复n次
+    'x'.repeat(3) // "xxx"
+    'hello'.repeat(2) // "hellohello"
+    'na'.repeat(0) // ""
+
+    ES6 将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。
+    // ES5的写法
+    parseInt('12.34') // 12
+    parseFloat('123.45#') // 123.45
+
+    // ES6的写法
+    Number.parseInt('12.34') // 12
+    Number.parseFloat('123.45#') // 123.45
+    这样做的目的，是逐步减少全局性方法，使得语言逐步模块化。
+
+    Number.isInteger()用来判断一个数值是否为整数，但是如果对数据精度的要求较高，不建议使用Number.isInteger()判断一个数值是否为整数。 
+
+    ES6新增了一个指数运算符（**），这个运算符的一个特点是右结合，而不是常见的左结合。多个指数运算符连用时，是从最右边开始计算的。
+
+    test
   </p>
 </body>
 </html>
