@@ -58,7 +58,34 @@
 
     ES6新增了一个指数运算符（**），这个运算符的一个特点是右结合，而不是常见的左结合。多个指数运算符连用时，是从最右边开始计算的。
 
-    test
+    ☆☆☆函数的参数指定默认值，而不是为变量x和y指定默认值
+    参数变量是默认声明的，所以不能用let或const再次声明。
+
+    使用参数默认值时，函数不能有同名参数。即有一个参数设置了默认值，其前面和后面的参数均不可同名。
+    function foo(x, x, y = 1) {
+      ...
+    }
+    // SyntaxError: Duplicate parameter name not allowed in this context
+    此外
+    //Rest参数必须是最后一个形式参数
+    function fun(param1,...param){
+      ...
+    }
+    //不能给剩余Rest参数设置默认值
+    function fun(param,...param1=[1,2,3]){//抛出异常 Rest parameter may not have a default initializer
+      ...
+    }
+
+    如果函数的参数提供了对象的解构赋值，那函数在调用的时候必须传参，如果调用时没有提供参数就会报错。但是如果提供函数参数默认值，就不会报错。
+
+    function f(x, y = 5, z) {
+      return [x, y, z];
+    }
+    f() // [undefined, 5, undefined]
+    f(1) // [1, 5, undefined]
+    f( ,1,2) // 报错 ☆非尾部参数无法省略，函数必须传入参数
+    foo(1, undefined, null) // [1, 5, null]
+    f(1, undefined, 2) // [1, 5, 2] ☆此处的调用，函数传入undefined，将触发该参数等于默认值，而null没有这个效果。
   </p>
 </body>
 </html>
