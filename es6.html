@@ -102,6 +102,11 @@
     上面代码之中，只有一个this，就是函数foo的this，所以t1、t2、t3都输出同样的结果。因为所有的内层函数都是箭头函数，都没有自己的this，它们的this其实都是最外层foo函数的this。
     此外，由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向，这些方法都无效。
 
+    由于箭头函数是作为对象字面量的属性定义的,对象字面量在全局代码中定义,因此,箭头函数内部的this值与全局函数的this值相同(John Resig的 JavaScript忍者秘籍(第2版) )
+    如果箭头函数被非箭头函数包含,则this绑定指向的是最近一层非箭头函数的this;否则,this的值会被设置为全局对象(Nicholas C.Zakes的 深入理解es6 )
+
+    如果箭头函数直接返回一个独享，则必须在对象外层加上圆括号，否则会把报错！
+
     JavaScript语言的try...catch结构，以前明确要求catch命令后面必须跟参数，接受try代码块抛出的错误对象。但很多时候，catch代码块可能用不到这个参数。但为了保证语法正确，还是必须写。ES2019做出了改变，允许catch语句省略参数。
 
 
@@ -110,8 +115,31 @@
     console.log((...[1, 2])) // Uncaught SyntaxError: Unexpected number
     console.log(...[1, 2]) // 1 2
     
-    test
     
+    ☆☆☆
+    1、在全局环境下，this 始终指向全局对象（window）, 无论是否严格模式；
+    2、函数上下文调用
+    普通函数内部的this分两种情况，严格模式和非严格模式。
+    ①非严格模式下，this 默认指向全局对象window
+    function f1(){
+      return this;
+    }
+    f1() === window; // true
+    ②而严格模式下， this为undefined
+    function f2(){
+      "use strict"; // 这里是严格模式
+      return this;
+    }
+    f2() === undefined; // true
+    3、
+
+
+
+
+
+
+
+
   </p>
 </body>
 </html>
