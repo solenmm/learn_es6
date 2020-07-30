@@ -86,6 +86,31 @@
     f( ,1,2) // 报错 ☆非尾部参数无法省略，函数必须传入参数
     foo(1, undefined, null) // [1, 5, null]
     f(1, undefined, 2) // [1, 5, 2] ☆此处的调用，函数传入undefined，将触发该参数等于默认值，而null没有这个效果。
+
+    setTimeout()是定时器函数，setInterval()是重复不停地执行某行为函数，直到clearInterval()被调用或窗口被关闭。
+
+
+    function foo() {
+      return () => {
+        return () => {
+          return () => {
+            console.log('id:', this.id);
+          };
+        };
+      };
+    }
+    上面代码之中，只有一个this，就是函数foo的this，所以t1、t2、t3都输出同样的结果。因为所有的内层函数都是箭头函数，都没有自己的this，它们的this其实都是最外层foo函数的this。
+    此外，由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向，这些方法都无效。
+
+    JavaScript语言的try...catch结构，以前明确要求catch命令后面必须跟参数，接受try代码块抛出的错误对象。但很多时候，catch代码块可能用不到这个参数。但为了保证语法正确，还是必须写。ES2019做出了改变，允许catch语句省略参数。
+
+
+    扩展运算符（spread）是三个点 ... ，该运算符主要用于函数调用。注意，只有函数调用时，扩展运算符才可以放在圆括号中，否则会报错。
+    (...[1, 2]) // Uncaught SyntaxError: Unexpected number
+    console.log((...[1, 2])) // Uncaught SyntaxError: Unexpected number
+    console.log(...[1, 2]) // 1 2
+    
+    
   </p>
 </body>
 </html>
