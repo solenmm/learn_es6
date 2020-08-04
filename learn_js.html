@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>learn_js</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var str = "ora nge";
+  var loc = str[str.length-2];
+  console.log(loc); //g
+  var idx1 = str.lastIndexOf('an',str.length-3);
+  console.log(idx1); //-1
+  var idx2 = str.search('a');
+  console.log(idx2); //2
+  var res = str.slice(-3,-1); 
+  console.log(res); //ng
+  // 总结：slice方法第一个参数若为负数，第二个参数也为负数，则需要大于第一个参数，否则返回空；第二个参数若为正数或第二个参数小于第一个参数，均返回空。参数只要为负数，均从字符串末尾开始计数，并且算上头，向后截取到尾的前一个字符。例如字符串'orange'，'orange'.slice(-3,-1)，第一个参数-3，即是从字符尾部起算，-3即是字符n，向后截取，-1的位置即是字符e，含头不含尾的截取，因此'orange'.slice(-3,-1)截取的字符为ng。substring方法则是参数不支持负数。和slice方法一样，第二个参数省略，表示截取第一个参数的位置后的所有字符。substr方法第一个参数可为正数也可为负数，第二个参数也可省略，原则同前两种方法一样，如果有第二个参数，则必须为正数，表示要截取的字符长度，若变为负数，则返回空。
+  var res = str.substring(2,4); 
+  console.log(res); //a
+  var res = str.substr(-5,1); 
+  console.log(res); //a
+  console.log(str.charAt(5)); //g
+  console.log(str.charCodeAt(3)); //32
+  console.log(str.split('a')); //["or", " nge"]
+</script>
+</html>
